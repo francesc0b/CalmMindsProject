@@ -1,10 +1,7 @@
 package main.Controller;
 
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.text.Text;
+/**
+ * Created by bjoynes on 11/4/2016.
+ */
 public class LoginController {
-
-
 }

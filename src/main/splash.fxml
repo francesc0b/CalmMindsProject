@@ -25,11 +25,11 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="182.0" layoutY="182.0" mnemonicParsing="false" text="Sign In" />
-            <TextField layoutX="132.0" layoutY="96.0" />
-            <Label layoutX="68.0" layoutY="100.0" text="Username" />
+            <Button fx:id="loginBtn" layoutX="182.0" layoutY="182.0" mnemonicParsing="false" text="Sign In" onAction="#login" />
+            <TextField layoutX="132.0" layoutY="96.0" fx:id="userField"  />
+            <Label layoutX="68.0" layoutY="100.0" text="Username"  />
             <Label layoutX="70.0" layoutY="142.0" text="Password" />
-            <PasswordField layoutX="134.0" layoutY="138.0" />
+            <PasswordField layoutX="134.0" layoutY="138.0" fx:id="passwordField" />
          </children>
       </Pane>
    </children>

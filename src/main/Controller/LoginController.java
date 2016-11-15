@@ -1,4 +1,5 @@
 package main.Controller;
+import javafx.collections.ObservableList;
 import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,6 +7,8 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import main.Resources.DBConnect;
 import javafx.stage.Stage;
 
@@ -71,18 +74,5 @@ public class LoginController {
 
 
     }
-
-@FXML
-    public void loadScene() throws IOException{
-
-
-
-
-
-
-
-    }
-
-
 
 }

@@ -9,7 +9,7 @@ import com.mysql.jdbc.Driver;
  * Created by blakejoynes on 11/4/16.
  */
 public class DBConnect {
-    private static String url = "jdbc:mysql://localhost:3306/calmmindsdb?useSSL=false";
+    private static String url = "jdbc:mysql://localhost:3306/calmmindsdb?useSSL=false"; //jdbc:mysql://triton.towson.edu:3360/calmmindsdb
     private static String driverName = "com.mysql.jdbc.Driver";
     private static String username = "admin";
     private static String password = "password";

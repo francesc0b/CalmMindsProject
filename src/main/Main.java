@@ -10,12 +10,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("View/loginView.fxml"));
-        Scene scene = new Scene(root);
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(scene);
+        Parent root = FXMLLoader.load(getClass().getResource("View/MainPage.fxml")); // View/loginView.fxml changed to skip DB cause I dont have
+        primaryStage.setTitle("Main Page");
+        primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
+
 
 
     public static void main(String[] args) {

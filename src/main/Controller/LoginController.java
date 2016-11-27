@@ -42,9 +42,8 @@ public class LoginController {
                 alert.setHeaderText("Login Status");
                 alert.setContentText("Login Successful!");
                 alert.showAndWait();
-
                 ((Node)(event.getSource())).getScene().getWindow().hide();
-                Parent root = FXMLLoader.load(getClass().getResource("/main/View/mainView.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/main/View/MainPage.fxml"));
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
                 stage.setTitle("Hello World");

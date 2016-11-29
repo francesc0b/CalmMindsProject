@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4fedfd23-af95-44ac-8279-5f06e091a5aa" name="Default" comment="Update GUI">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Controller/ClientGuiController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Controller/CounselorGuiController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Controller/MainPageController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Controller/viewAllClientController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/View/allClientConfig.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/View/clientConfig.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/View/counselorConfig.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/Controller/MainController.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1.xml" />
+    <list default="true" id="4fedfd23-af95-44ac-8279-5f06e091a5aa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Model/Client.java" afterPath="$PROJECT_DIR$/src/main/Model/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Model/Counseler.java" afterPath="$PROJECT_DIR$/src/main/Model/Counseler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/View/mainView.fxml" afterPath="$PROJECT_DIR$/src/main/View/mainView.fxml" />
     </list>
     <ignored path="CalmMindsProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -540,6 +528,14 @@
       <option name="presentableId" value="Default" />
       <updated>1480373322452</updated>
     </task>
+    <task id="LOCAL-00001" summary="&#10;Update gUI">
+      <created>1480383206188</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1480383206188</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -614,9 +610,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&#10;" />
     <MESSAGE value="Update GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update GUI" />
+    <MESSAGE value="&#10;" />
+    <MESSAGE value="&#10;Update gUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;Update gUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

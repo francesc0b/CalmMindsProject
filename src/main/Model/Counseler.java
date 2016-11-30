@@ -11,7 +11,7 @@ public class Counseler extends Person {
     private Date hireDate;
     private int yearsOfExp;
 
-    public Counseler(int SSN, String fName, String mName, String lName, char sex, String address, String cellPhoneNum, String housePhoneNum) {
+    public Counseler(int SSN, String fName, String mName, String lName, String sex, String address, String cellPhoneNum, String housePhoneNum) {
         super(SSN, fName, mName, lName, sex, address, cellPhoneNum, housePhoneNum);
     }
 

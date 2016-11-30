@@ -1,37 +1,32 @@
 package main.Controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by blakejoynes on 11/28/16.
  */
-public class viewAllClientController {
-@FXML
-TableColumn tblColumn;
 
+public class viewAllClientController implements Initializable {
 
+@FXML private TableColumn tableColumn;
 
-
-
-@FXML public void setTableColumns(){
-
-
-
-
-}
-
-
-
-    @FXML public void populateTable(){
+    /**
+     *
+     * @param location not used
+     * @param resources not used
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
 
 
 
     }
-
-
-
 
 
 }

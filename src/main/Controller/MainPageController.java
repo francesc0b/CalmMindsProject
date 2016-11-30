@@ -34,7 +34,7 @@ public class MainPageController {
             if (root != null) {
                 Stage stage = new Stage();
                 stage.setTitle("Client Window");
-                stage.setScene(new Scene(root, 800, 600));
+                stage.setScene(new Scene(root, 952, 592));
                 stage.show();
                 // Hide this current window (if this is what you want)
                 //((Node) (actionEvent.getSource())).getScene().getWindow().hide();

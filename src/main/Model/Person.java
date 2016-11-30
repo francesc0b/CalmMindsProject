@@ -8,12 +8,16 @@ public class Person {
     private String fName;
     private String mName;
     private String lName;
-    private char sex;
+    private String sex;
     private String address;
     private String housePhoneNum;
     private String cellPhoneNum;
 
-    public Person(int SSN,String fName,String mName, String lName,char sex, String address, String cellPhoneNum, String housePhoneNum){
+    Person(){
+
+    }
+
+    public Person(int SSN,String fName,String mName, String lName,String sex, String address, String cellPhoneNum, String housePhoneNum){
         this.SSN = SSN;
         this.fName = fName;
         this.mName = mName;
@@ -57,11 +61,11 @@ public class Person {
     }
 
 
-    public char getSex(){
+    public String getSex(){
         return sex;
     }
 
-    public void setSex(char sex){
+    public void setSex(String sex){
         this.sex = sex;
     }
 

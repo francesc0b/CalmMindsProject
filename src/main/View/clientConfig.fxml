@@ -17,13 +17,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="952.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ClientGuiController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1027.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ClientGuiController">
    <children>
-      <SplitPane dividerPositions="0.6984667802385008" prefHeight="592.0" prefWidth="955.0">
+      <SplitPane dividerPositions="0.6984667802385008" prefHeight="592.0" prefWidth="1027.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="394.0">
                <children>
-                  <TabPane layoutX="-3.0" layoutY="44.0" prefHeight="514.0" prefWidth="665.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane layoutX="-3.0" layoutY="44.0" prefHeight="514.0" prefWidth="718.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Information">
                            <content>
@@ -56,9 +56,9 @@
                                        </font>
                                     </Label>
                                     <Label layoutX="21.0" layoutY="232.0" text="Company Name:" />
-                                    <TextField layoutX="141.0" layoutY="227.0" prefHeight="27.0" prefWidth="117.0" />
+                                    <TextField fx:id="insCompanyName" layoutX="141.0" layoutY="227.0" prefHeight="27.0" prefWidth="117.0" />
                                     <Label layoutX="29.0" layoutY="275.0" text="Policy Number:" />
-                                    <TextField layoutX="142.0" layoutY="271.0" prefHeight="27.0" prefWidth="117.0" promptText="############" />
+                                    <TextField fx:id="insPolicyNumber" layoutX="142.0" layoutY="271.0" prefHeight="27.0" prefWidth="117.0" promptText="###-###-###" />
                                     <Label layoutX="353.0" layoutY="175.0" prefHeight="28.0" prefWidth="236.0" text="Current Assignment" underline="true">
                                        <font>
                                           <Font name="System Bold" size="22.0" />
@@ -66,15 +66,18 @@
                                     </Label>
                                     <Label layoutX="332.0" layoutY="234.0" text="Counselor ID#:" />
                                     <Label layoutX="316.0" layoutY="263.0" text="Counselor Name:" />
-                                    <Label layoutX="334.0" layoutY="286.0" text="Therapy Type:" />
-                                    <Label layoutX="299.0" layoutY="311.0" text="Contract Start Date:" />
-                                    <Label layoutX="293.0" layoutY="338.0" text="Date of Last Session:" />
+                                    <Label layoutX="297.0" layoutY="290.0" text="Contract Start Date:" />
                                     <TextField fx:id="clientCellPhone" layoutX="96.0" layoutY="142.0" prefHeight="27.0" prefWidth="135.0" />
                                     <Label layoutX="29.0" layoutY="148.0" text="Cell Phone:">
                                        <font>
                                           <Font size="12.0" />
                                        </font>
                                     </Label>
+                                    <Label fx:id="counselorIDLbl" layoutX="464.0" layoutY="234.0" text="Label" />
+                                    <Label fx:id="counselorNameLbl" layoutX="464.0" layoutY="263.0" text="Label" />
+                                    <Label fx:id="contractStartLbl" layoutX="464.0" layoutY="290.0" text="Label" />
+                                    <Label layoutX="303.0" layoutY="324.0" text="Contract End Date:" />
+                                    <Label fx:id="contractEndLbl" layoutX="464.0" layoutY="324.0" text="Label" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -84,7 +87,7 @@
                               <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
                                   <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
+                                  <TableColumn prefWidth="75.0" text="temp" />
                                 </columns>
                               </TableView>
                            </content>
@@ -101,18 +104,20 @@
                         </Tab>
                     </tabs>
                   </TabPane>
-                  <Button fx:id="btnSearchClients" layoutX="394.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchBySSN" text="Search" />
-                  <TextField fx:id="clientSsn" layoutX="216.0" layoutY="10.0" promptText="###-###-#####" />
-                  <Label layoutX="120.0" layoutY="15.0" text="Search By SSN:" />
+                  <Button fx:id="btnSearchClients" layoutX="344.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchBySSN" text="Search" />
+                  <TextField fx:id="clientSsn" layoutX="177.0" layoutY="10.0" promptText="###-###-#####" />
+                  <Label layoutX="146.0" layoutY="15.0" text="SSN:" />
                   <Label fx:id="message" layoutX="13.0" layoutY="566.0" text="Error Info" />
                   <Button layoutX="13.0" layoutY="10.0" mnemonicParsing="false" text="Main Menu" />
-                  <Button layoutX="520.0" layoutY="10.0" mnemonicParsing="false" text="Update" />
-                  <Button layoutX="590.0" layoutY="10.0" mnemonicParsing="false" text="Delete" />
+                  <Button fx:id="deleteBtn" layoutX="655.0" layoutY="10.0" mnemonicParsing="false" onAction="#removeClient" text="Delete" />
+                  <Button fx:id="saveBtn" layoutX="516.0" layoutY="10.0" mnemonicParsing="false" onAction="#addClient" prefHeight="27.0" prefWidth="58.0" text="Add" />
+                  <Button layoutX="412.0" layoutY="10.0" mnemonicParsing="false" onAction="#clearData" text="Clear" />
+                  <Button fx:id="updateBtn" layoutX="583.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateClient" text="Update" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="384.0">
                <children>
-                  <TextArea fx:id="queryResults" prefHeight="504.0" prefWidth="284.0" />
+                  <TextArea fx:id="queryResults" prefHeight="504.0" prefWidth="357.0" />
                </children>
             </AnchorPane>
         </items>

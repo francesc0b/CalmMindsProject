@@ -1,27 +1,30 @@
 package main.Model;
 
+import java.sql.Date;
+
 /**
  * Created by blakejoynes on 11/16/16.
  */
 public class Person {
    private int SSN;
-    private String fName;
-    private String mName;
-    private String lName;
+    private String firstName;
+    private String middleInit;
+    private String lastName;
     private String sex;
     private String address;
     private String housePhoneNum;
     private String cellPhoneNum;
+    private Date dateOfBirth;
 
     Person(){
 
     }
 
-    public Person(int SSN,String fName,String mName, String lName,String sex, String address, String cellPhoneNum, String housePhoneNum){
+    public Person(int SSN,String fName,String middleInit, String lName,String sex, String address, String cellPhoneNum, String housePhoneNum){
         this.SSN = SSN;
-        this.fName = fName;
-        this.mName = mName;
-        this.lName = lName;
+        this.firstName = fName;
+        this.middleInit = middleInit;
+        this.lastName = lName;
         this.sex = sex;
         this.address = address;
         this.cellPhoneNum = cellPhoneNum;
@@ -37,27 +40,34 @@ public class Person {
     }
 
 
-    public String getfName(){
-        return fName;
+    public Date getDateOfBirth(){
+        return dateOfBirth;
     }
-    public void setFname(String fName){
-        this.fName = fName;
+    public void setDateOfBirth(Date dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getFirstName(){
+        return firstName;
+    }
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
     }
 
 
-    public String getmName(){
-        return mName;
+    public String getMiddleInit(){
+        return middleInit;
     }
-    public void setmName(String mName){
-        this.mName = mName;
+    public void setMiddleInit(String middleInit){
+        this.middleInit = middleInit;
     }
 
 
-    public String getlName(){
-        return lName;
+    public String getLastName(){
+        return lastName;
     }
-    public void setlName(String lName){
-        this.lName = lName;
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
 
 

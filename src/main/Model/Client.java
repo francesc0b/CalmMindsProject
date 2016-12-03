@@ -8,6 +8,10 @@ import java.util.Date;
 public class Client extends Person {
     private String insuranceName;
     private int insPolicyNum;
+    private Date dateDiagnosed;;
+    private String historyDetails;
+    private String previousTreatment;
+    private String treatmentType;
 
     public Client(){
 

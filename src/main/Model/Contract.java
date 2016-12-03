@@ -9,6 +9,8 @@ public class Contract {
     private int contractID;
     private Date dateTerminated;
     private Date dateStarted;
+    private String counselorName;
+    private String clientName;
 
     public Contract(){
 
@@ -36,6 +38,22 @@ public class Contract {
 
     public void setDateStarted(Date dateStarted){
         this.dateStarted = dateStarted;
+    }
+
+    public String getCounselorName(){
+        return counselorName;
+    }
+
+    public void setCounselorName(String counselorName){
+        this.counselorName = counselorName;
+    }
+
+    public String getClientName(){
+        return clientName;
+    }
+
+    public void setClientName(String clientName){
+        this.clientName = clientName;
     }
 
 }

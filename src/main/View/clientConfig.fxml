@@ -84,20 +84,26 @@
                         </Tab>
                       <Tab text="History">
                            <content>
-                              <TableView prefHeight="200.0" prefWidth="200.0">
+                              <TableView fx:id="clientHistoryTable" prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="temp" />
+                                  <TableColumn fx:id="dateDiagnosedCol" prefWidth="116.0" text="Date Diagnosed" />
+                                  <TableColumn fx:id="previousTreatmentCol" prefWidth="182.0" text="Previous Treatment" />
+                                    <TableColumn fx:id="treatmentTypeCol" prefWidth="116.0" text="Treatment Type" />
+                                    <TableColumn fx:id="historyDetailsCol" prefWidth="116.0" text="Details" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Schedule">
                            <content>
-                              <TableView prefHeight="200.0" prefWidth="200.0">
+                              <TableView fx:id="scheduleTable" prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
+                                  <TableColumn fx:id="sessionDateCol" prefWidth="112.0" text="Session Date" />
+                                  <TableColumn fx:id="counselNameCol" prefWidth="121.0" text="Counselor Name" />
+                                    <TableColumn fx:id="availabilityCol" prefWidth="121.0" text="Availibility" />
+                                    <TableColumn fx:id="sessionTypeCol" prefWidth="121.0" text="Session Type" />
+                                    <TableColumn fx:id="therapyTypeCol" prefWidth="121.0" text="Therapy Type" />
+                                    <TableColumn fx:id="violationCol" prefWidth="121.0" text="Violation" />
                                 </columns>
                               </TableView>
                            </content>

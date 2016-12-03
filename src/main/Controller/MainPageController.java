@@ -16,7 +16,7 @@ public class MainPageController {
             if (root != null) {
                 Stage stage = new Stage();
                 stage.setTitle("Counselor Window");
-                stage.setScene(new Scene(root, 800, 600));
+                stage.setScene(new Scene(root, 1027, 592));
                 stage.show();
                 // Hide this current window (if this is what you want)
                 //((Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -52,6 +52,24 @@ public class MainPageController {
             if (root != null) {
                 Stage stage = new Stage();
                 stage.setTitle("All Clients");
+                stage.setScene(new Scene(root, 800, 600));
+                stage.show();
+                // Hide this current window (if this is what you want)
+                //((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            }
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void allCounselorActivation(ActionEvent actionEvent) throws IOException {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("../View/allCounselorConfig.fxml"));
+            if (root != null) {
+                Stage stage = new Stage();
+                stage.setTitle("All Counselors");
                 stage.setScene(new Scene(root, 800, 600));
                 stage.show();
                 // Hide this current window (if this is what you want)

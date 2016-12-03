@@ -50,7 +50,7 @@
                     </font>
                 </Label>
             <Button mnemonicParsing="false" onAction="#allClientActivation" prefHeight="27.0" prefWidth="117.0" text="View All Clients" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="121.0" text="View All Counselors" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#allCounselorActivation" prefHeight="27.0" prefWidth="121.0" text="View All Counselors" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font size="11.0" />
                </font>

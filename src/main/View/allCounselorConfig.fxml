@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.viewAllCounselorsController">
+   <children>
+      <TableView fx:id="allCounselorsTable" prefHeight="400.0" prefWidth="885.0">
+        <columns>
+            <TableColumn fx:id="counselorIDCol" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="ssnCol" prefWidth="75.0" text="SSN" />
+            <TableColumn fx:id="hireDateCol" prefWidth="75.0" text="Date of Hire" />
+            <TableColumn fx:id="yearsOfExpCol" prefWidth="75.0" text="Years of Exp." />
+            <TableColumn fx:id="dobCol" prefWidth="104.0" text="Date of Birth" />
+            <TableColumn fx:id="fNameCol" prefWidth="75.0" text="First Name" />
+            <TableColumn fx:id="mInitCol" prefWidth="87.0" text="Middle Initial" />
+            <TableColumn fx:id="lNameCol" prefWidth="74.0" text="Last Name" />
+            <TableColumn fx:id="sexCol" prefWidth="62.0" text="Sex" />
+            <TableColumn fx:id="addressCol" prefWidth="149.0" text="Address" />
+            <TableColumn fx:id="houseNumCol" prefWidth="194.0" text="House Phone #" />
+            <TableColumn fx:id="cellNumCol" prefWidth="194.0" text="Cellphone #" />
+            <TableColumn fx:id="degreeTypeCol" prefWidth="75.0" text="Degree" />
+            <TableColumn fx:id="degreeLevelCol" prefWidth="75.0" text="Level" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

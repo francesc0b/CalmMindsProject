@@ -3,8 +3,10 @@ package main.Controller;/**
  */
 
 import com.sun.prism.paint.Paint;
+import com.sun.tools.javac.util.Name;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +19,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import main.Model.Client;
-import main.Model.Contract;
-import main.Model.Counselor;
+import main.Model.*;
 import main.Resources.DBConnect;
 
 import java.awt.*;
@@ -37,34 +38,53 @@ public class ClientGuiController implements Initializable{
 
     private static final int ssnLength = 9;
     public TextField historyDate;
-    public TextField clientAddress;
-    public TextField clientHousePhone;
-    public TextField clientCellPhone;
-    public TextField clientSsn;
-    public TextArea queryResults;
-    public Button searchButton;
-    public TextField clientFirstName;
-    public TextField clientMidInit;
-    public TextField historyTreatment;
-    public TextField clientLastName;
-    public ChoiceBox clientSex;
-    public TextField therapistId;
-    public TextField therapyType;
-    public TextField insCompanyName;
-    public TextField insPolicyNumber;
-    public TextField sessionType;
-    public Label message;
-    private Connection connection;
-    private Client client;
-    private Contract contract;
-    private Counselor counselor;
-    public Label counselorIDLbl;
-    public Label counselorNameLbl;
-    public Label contractStartLbl;
-    public Label contractEndLbl;
-    public Button saveBtn;
-    public Button updateBtn;
+    @FXML private TextField clientAddress;
+    @FXML private TextField clientHousePhone;
+    @FXML private TextField clientCellPhone;
+    @FXML private TextField clientSsn;
+    @FXML private TextArea queryResults;
+    @FXML private TextField clientFirstName;
+    @FXML private TextField clientMidInit;
+    @FXML private TextField historyTreatment;
+    @FXML private TextField clientLastName;
+    @FXML private ChoiceBox clientSex;
+    @FXML private TextField insCompanyName;
+    @FXML private TextField insPolicyNumber;
+    @FXML private Label message;
 
+    private Connection connection;
+    public Client client;
+    public Contract contract;
+    public Counselor counselor;
+    public ClientHistory history;
+
+    @FXML private Label counselorIDLbl;
+    @FXML private Label counselorNameLbl;
+    @FXML private Label contractStartLbl;
+    @FXML private Label contractEndLbl;
+    @FXML private Button saveBtn;
+    @FXML private Button updateBtn;
+    @FXML private TableColumn<ClientHistory,Date> dateDiagnosedCol;
+    @FXML private TableColumn<ClientHistory,String> historyDetailsCol;
+    @FXML private TableColumn<ClientHistory,String> previousTreatmentCol;
+    @FXML private TableColumn<ClientHistory,String> treatmentTypeCol;
+    @FXML private TableColumn<Schedule,String> availabilityCol;
+    @FXML private TableColumn<Schedule,String> counselNameCol;
+    @FXML private TableColumn<Schedule,String> sessionDateCol;
+    @FXML private TableColumn<Schedule,String> sessionTypeCol;
+    @FXML private TableColumn<Schedule,String> violationCol;
+    @FXML private TableColumn<Schedule,String> therapyTypeCol;
+    @FXML private TableView<ClientHistory> clientHistoryTable;
+    @FXML private TableView<Schedule> scheduleTable;
+    private ObservableList<ClientHistory> historydata;
+    private ObservableList<Schedule> scheddata;
+
+
+    /**
+     *
+     * @param location ignored
+     * @param resources ignored
+     */
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -72,12 +92,29 @@ public class ClientGuiController implements Initializable{
      client = new Client();
      contract = new Contract();
      counselor = new Counselor();
-     clientSex.setItems(FXCollections.observableArrayList("Select Sex", new Separator(), "Male", "Female")
+     history = new ClientHistory();
+
+        clientSex.setItems(FXCollections.observableArrayList("Select Sex", new Separator(), "Male", "Female")
 
      );
      clientSex.getSelectionModel().selectFirst();
 
+        dateDiagnosedCol.setCellValueFactory(new PropertyValueFactory<>("dateDiagnosed"));
+        historyDetailsCol.setCellValueFactory(new PropertyValueFactory<>("details"));
+        previousTreatmentCol.setCellValueFactory(new PropertyValueFactory<>("previousTreatment"));
+        treatmentTypeCol.setCellValueFactory(new PropertyValueFactory<>("treatmentType"));
+
+
+        availabilityCol.setCellValueFactory(new PropertyValueFactory<>("Availability"));
+        counselNameCol.setCellValueFactory(new PropertyValueFactory<>("Counselor Name"));
+        sessionDateCol.setCellValueFactory(new PropertyValueFactory<>("Session Date"));
+        sessionTypeCol.setCellValueFactory(new PropertyValueFactory<>("Session Type"));
+        therapyTypeCol.setCellValueFactory(new PropertyValueFactory<>("Therapy Type"));
+        violationCol.setCellValueFactory(new PropertyValueFactory<>("Violation"));
+
     }
+
+
 
 
 //Adds new client to database
@@ -100,9 +137,9 @@ public class ClientGuiController implements Initializable{
                String query = "INSERT INTO Person (SSN,fName,mInit,lName,housePhoneNum,cellPhoneNum,address,sex,type) VALUES (?,?,?,?,?,?,?,?,?)";
                ps = connection.prepareStatement(query);
                ps.setInt(1, client.getSSN());
-               ps.setString(2, client.getfName());
-               ps.setString(3, client.getmName());
-               ps.setString(4, client.getlName());
+               ps.setString(2, client.getFirstName());
+               ps.setString(3, client.getMiddleInit());
+               ps.setString(4, client.getLastName());
                ps.setString(5, client.getHousePhoneNum());
                ps.setString(6, client.getCellPhoneNum());
                ps.setString(7, client.getAddress());
@@ -117,6 +154,7 @@ public class ClientGuiController implements Initializable{
                populateInsurance();
 
                populateTextBox();
+               message.setText("Record added successfully!");
                ps.close();
            }
 
@@ -133,9 +171,9 @@ public class ClientGuiController implements Initializable{
             try {
                 String query = "UPDATE Person set fName=?, mInit=?, lName=?,housePhoneNum=?,cellPhoneNum=?,address=?,sex=? WHERE SSN ='" + client.getSSN() + "'";
                 PreparedStatement ps = connection.prepareStatement(query);
-                ps.setString(1, client.getfName());
-                ps.setString(2, client.getmName());
-                ps.setString(3, client.getlName());
+                ps.setString(1, client.getFirstName());
+                ps.setString(2, client.getMiddleInit());
+                ps.setString(3, client.getLastName());
                 ps.setString(4, client.getHousePhoneNum());
                 ps.setString(5, client.getCellPhoneNum());
                 ps.setString(6, client.getAddress());
@@ -171,7 +209,7 @@ public class ClientGuiController implements Initializable{
     public void removeClient(ActionEvent actionEvent) {
         // We will only allow them to remove a full record by ssn
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Do you want to delete this record for " + client.getfName() + " " + client.getlName() + "?",ButtonType.NO,ButtonType.YES);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Do you want to delete this record for " + client.getFirstName() + " " + client.getLastName() + "?",ButtonType.NO,ButtonType.YES);
         alert.setTitle("Delete Record");
         alert.setHeaderText("Record Deletion");
         Optional<ButtonType> result = alert.showAndWait();
@@ -213,9 +251,9 @@ public class ClientGuiController implements Initializable{
 
                    do{
                        client.setSSN(rs.getInt("SSN"));
-                       client.setFname(rs.getString("fName"));
-                       client.setmName(rs.getString("mInit"));
-                       client.setlName(rs.getString("lName"));
+                       client.setFirstName(rs.getString("fName"));
+                       client.setMiddleInit(rs.getString("mInit"));
+                       client.setLastName(rs.getString("lName"));
                        client.setSex(rs.getString("sex"));
                        client.setAddress(rs.getString("address"));
                        client.setHousePhoneNum(rs.getString("housePhoneNum"));
@@ -227,6 +265,7 @@ public class ClientGuiController implements Initializable{
 
                    populateInsurance();
                    updateAssignmentInfo();
+                   populateClientHistory();
                    updateFields(actionEvent);
                    ps.close();
                }else{
@@ -251,16 +290,16 @@ public class ClientGuiController implements Initializable{
 
 
     @FXML public void updateFields(ActionEvent actionEvent){
-      clientFirstName.setText(client.getfName());
-      clientMidInit.setText(client.getmName());
-      clientLastName.setText(client.getlName());
+      clientFirstName.setText(client.getFirstName());
+      clientMidInit.setText(client.getMiddleInit());
+      clientLastName.setText(client.getLastName());
       clientHousePhone.setText(client.getHousePhoneNum());
       clientCellPhone.setText(client.getCellPhoneNum());
       clientAddress.setText(client.getAddress());
       insCompanyName.setText(client.getInsName());
       insPolicyNumber.setText(String.valueOf(client.getInsPolicyNum()));
-      counselorIDLbl.setText(String.valueOf(counselor.getCID()));
-      counselorNameLbl.setText(counselor.getfName() + " " + counselor.getmName() + " " + counselor.getlName());
+      counselorIDLbl.setText(String.valueOf(counselor.getCounselorID()));
+      counselorNameLbl.setText(counselor.getFirstName() + " " + counselor.getMiddleInit() + " " + counselor.getLastName());
       contractStartLbl.setText(String.valueOf(contract.getDateStarted()));
       contractEndLbl.setText(String.valueOf(contract.getDateTerminated()));
 
@@ -273,22 +312,26 @@ public class ClientGuiController implements Initializable{
       populateTextBox();
     }
 
-    @FXML public void populateTextBox(){
-        queryResults.appendText("Name: " + client.getfName() + " " + client.getmName() + " " + client.getlName() + "\n");
-        queryResults.appendText("House Phone #: " + client.getHousePhoneNum() + "\n" + "Cell Phone #: " + client.getCellPhoneNum() + "\n"  );
-        queryResults.appendText("Address: " + client.getAddress());
-        queryResults.appendText("\n \n");
-        queryResults.appendText("Ins. Policy Name & Number: " + client.getInsName() + " " + client.getInsPolicyNum());
+    @FXML public void populateTextBox() {
 
-
+        if (queryResults.getText().isEmpty()) {
+            queryResults.appendText("Name: " + client.getFirstName() + " " + client.getMiddleInit() + " " + client.getLastName() + "\n");
+            queryResults.appendText("House Phone #: " + client.getHousePhoneNum() + "\n" + "Cell Phone #: " + client.getCellPhoneNum() + "\n");
+            queryResults.appendText("Address: " + client.getAddress());
+            queryResults.appendText("\n \n");
+            queryResults.appendText("Ins. Policy Name: " + client.getInsName() + "\nPolicy Number: " + client.getInsPolicyNum());
+        } else {
+            queryResults.setText("");
+            populateTextBox();
+        }
     }
 
 
     public void giveClientInfo(){
         client.setSSN(Integer.parseInt(clientSsn.getText()));
-        client.setFname(clientFirstName.getText());
-        client.setmName(clientMidInit.getText());
-        client.setlName(clientLastName.getText());
+        client.setFirstName(clientFirstName.getText());
+        client.setMiddleInit(clientMidInit.getText());
+        client.setLastName(clientLastName.getText());
         client.setAddress(clientAddress.getText());
         client.setHousePhoneNum(clientHousePhone.getText());
         client.setCellPhoneNum(clientCellPhone.getText());
@@ -324,10 +367,10 @@ public class ClientGuiController implements Initializable{
 
 
             }else {
-                while (rs.next()) {
+                do {
                     client.setInsName(rs.getString("name"));
                     client.setInsPolicyNum(rs.getInt("policyNum"));
-                }
+                }while (rs.next());
             }
 
             }catch(SQLException e){
@@ -350,10 +393,10 @@ public class ClientGuiController implements Initializable{
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 contract.setDateStarted(rs.getDate("dateStarted"));
-                counselor.setCID(rs.getInt("counID"));
-                counselor.setFname(rs.getString("fName"));
-                counselor.setmName(rs.getString("mInit"));
-                counselor.setlName(rs.getString("lName"));
+                counselor.setCounselorID(rs.getInt("counID"));
+                counselor.setFirstName(rs.getString("fName"));
+                counselor.setMiddleInit(rs.getString("mInit"));
+                counselor.setLastName(rs.getString("lName"));
                 contract.setDateTerminated(rs.getDate("dateTerminated"));
 
             }
@@ -366,6 +409,70 @@ public class ClientGuiController implements Initializable{
 
     }
 
+
+    @FXML public void populateClientHistory(){
+   historydata = FXCollections.observableArrayList();
+
+        try{
+            String query = "SELECT * FROM client_history WHERE SSN = ? ";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, String.valueOf(client.getSSN()));
+
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                history.setDateDiagnosed(rs.getDate("dateDiagnosed"));
+                history.setHistoryDetails(rs.getString("details"));
+                history.setPreviousTreatment(rs.getString("previousTreatment"));
+                history.setTreatmentType(rs.getString("treatmentType"));
+                historydata.add(history);
+            }
+
+            clientHistoryTable.setItems(historydata);
+            clientHistoryTable.columnResizePolicyProperty();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Error on history Data");
+        }
+
+
+    }
+
+
+    @FXML public void populateClientSchedule(){
+
+        historydata = FXCollections.observableArrayList();
+
+        try{
+            String query = "SELECT * FROM client_history WHERE SSN = ? ";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, String.valueOf(client.getSSN()));
+
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                history.setDateDiagnosed(rs.getDate("dateDiagnosed"));
+                history.setHistoryDetails(rs.getString("details"));
+                history.setPreviousTreatment(rs.getString("previousTreatment"));
+                history.setTreatmentType(rs.getString("treatmentType"));
+                historydata.add(history);
+            }
+
+            clientHistoryTable.setItems(historydata);
+            clientHistoryTable.columnResizePolicyProperty();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Error on history Data");
+        }
+
+
+
+
+    }
 
 
 
@@ -387,6 +494,8 @@ public void clearData(){
         contractEndLbl.setText("");
         clientSex.getSelectionModel().selectFirst();
         queryResults.setText("");
+        clientHistoryTable.getItems().clear();
+        scheduleTable.getItems().clear();
 
         message.setTextFill(Color.BLACK);
 

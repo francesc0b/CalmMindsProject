@@ -12,6 +12,7 @@ public class Client extends Person {
     private String historyDetails;
     private String previousTreatment;
     private String treatmentType;
+    private String courtOrdered;
 
     public Client(){
 
@@ -21,6 +22,14 @@ public class Client extends Person {
         super(SSN, fName, mName, lName, sex, address, cellPhoneNum, housePhoneNum);
     }
 
+    public void setCourtOrdered(String courtOrdered){
+        this.courtOrdered = courtOrdered;
+    }
+    
+    public String getCourtOrdered(){
+        return courtOrdered;
+    }
+    
     public void setInsName(String insuranceName){
         this.insuranceName = insuranceName;
     }

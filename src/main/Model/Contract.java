@@ -11,6 +11,7 @@ public class Contract {
     private Date dateStarted;
     private String counselorName;
     private String clientName;
+    private String courtOrdered;
 
     public Contract(){
 
@@ -19,7 +20,7 @@ public class Contract {
     public int getContractID(){
         return contractID;
     }
-
+    
     public void setContractID(int contractID){
         this.contractID = contractID;
     }
@@ -54,6 +55,14 @@ public class Contract {
 
     public void setClientName(String clientName){
         this.clientName = clientName;
+    }
+    
+    public String getCourtOrdered(){
+        return courtOrdered;
+    }
+    
+    public void setCourtOrdered(String courtOrdered){
+        this.courtOrdered = courtOrdered;
     }
 
 }

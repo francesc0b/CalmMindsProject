@@ -14,6 +14,7 @@ private String degreeType;
 private String degreeLevel;
 private String specialization;
 private String availability;
+private int numOfClients;
     public Counselor(){
 
     }
@@ -44,6 +45,15 @@ private String availability;
     public void setDegreeLevel(String degreeLevel){
         this.degreeLevel = degreeLevel;
     }
+    
+    public int getNumOfClients(){
+        return numOfClients;
+    }
+    
+    public void setNumOfClients(int numOfClients){
+        this.numOfClients = numOfClients;
+    }
+    
     public String getSpecialization(){
         return specialization;
     }

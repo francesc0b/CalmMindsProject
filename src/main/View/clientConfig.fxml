@@ -78,6 +78,8 @@
                                     <Label fx:id="contractStartLbl" layoutX="464.0" layoutY="290.0" text="Label" />
                                     <Label layoutX="303.0" layoutY="324.0" text="Contract End Date:" />
                                     <Label fx:id="contractEndLbl" layoutX="464.0" layoutY="324.0" text="Label" />
+                                    <DatePicker fx:id="dateOfBirthPicker" layoutX="326.0" layoutY="142.0" prefHeight="27.0" prefWidth="182.0" />
+                                    <Label fx:id="counselorNameLbl1" layoutX="238.0" layoutY="147.0" text="Date of Birth:" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -114,11 +116,11 @@
                   <TextField fx:id="clientSsn" layoutX="177.0" layoutY="10.0" promptText="###-###-#####" />
                   <Label layoutX="146.0" layoutY="15.0" text="SSN:" />
                   <Label fx:id="message" layoutX="13.0" layoutY="566.0" text="Error Info" />
-                  <Button layoutX="13.0" layoutY="10.0" mnemonicParsing="false" text="Main Menu" />
                   <Button fx:id="deleteBtn" layoutX="655.0" layoutY="10.0" mnemonicParsing="false" onAction="#removeClient" text="Delete" />
                   <Button fx:id="saveBtn" layoutX="516.0" layoutY="10.0" mnemonicParsing="false" onAction="#addClient" prefHeight="27.0" prefWidth="58.0" text="Add" />
                   <Button layoutX="412.0" layoutY="10.0" mnemonicParsing="false" onAction="#clearData" text="Clear" />
                   <Button fx:id="updateBtn" layoutX="583.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateClient" text="Update" />
+                  <Button layoutX="13.0" layoutY="10.0" mnemonicParsing="false" onAction="#refreshData" text="Refresh" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="384.0">

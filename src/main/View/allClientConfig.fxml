@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -10,18 +11,121 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.viewAllClientController">
    <children>
-      <TableView fx:id="allClientsTable" prefHeight="400.0" prefWidth="885.0">
-        <columns>
-          <TableColumn fx:id="ssnCol" prefWidth="84.0" text="SSN" />
-            <TableColumn fx:id="dobCol" prefWidth="95.0" text="Date of Birth" />
-            <TableColumn fx:id="fNameCol" prefWidth="75.0" text="First Name" />
-            <TableColumn fx:id="mInitCol" prefWidth="87.0" text="Middle Initial" />
-            <TableColumn fx:id="lNameCol" prefWidth="74.0" text="Last Name" />
-            <TableColumn fx:id="sexCol" prefWidth="62.0" text="Sex" />
-            <TableColumn fx:id="addressCol" prefWidth="149.0" text="Address" />
-            <TableColumn fx:id="houseNumCol" prefWidth="142.0" text="House Phone #" />
-            <TableColumn fx:id="cellNumCol" maxWidth="140.0" minWidth="116.0" prefWidth="116.0" text="Cellphone #" />
-        </columns>
-      </TableView>
+      <TabPane prefHeight="453.0" prefWidth="885.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Clients Info">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="allClientsTable" prefHeight="400.0" prefWidth="885.0">
+                          <columns>
+                            <TableColumn fx:id="ssnCol" prefWidth="84.0" text="SSN" />
+                              <TableColumn fx:id="fNameCol" prefWidth="75.0" text="First Name" />
+                              <TableColumn fx:id="mInitCol" prefWidth="87.0" text="Middle Initial" />
+                              <TableColumn fx:id="lNameCol" prefWidth="74.0" text="Last Name" />
+                              <TableColumn fx:id="dobCol" prefWidth="95.0" text="Date of Birth" />
+                              <TableColumn fx:id="sexCol" prefWidth="62.0" text="Sex" />
+                              <TableColumn fx:id="addressCol" prefWidth="149.0" text="Address" />
+                              <TableColumn fx:id="houseNumCol" prefWidth="142.0" text="House Phone #" />
+                              <TableColumn fx:id="cellNumCol" maxWidth="140.0" minWidth="116.0" prefWidth="116.0" text="Cellphone #" />
+                              <TableColumn fx:id="courtOrderedCol" prefWidth="62.0" text="Court Order"/>
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Demograhics">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+                           <children>
+                              <GridPane gridLinesVisible="true" layoutY="68.0" prefHeight="332.0" prefWidth="600.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" text="Male" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="69.0" text="Female" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Label text="Free Will" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+                                    <Label text="Court Ordered" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
+                                    <Label alignment="CENTER" text="Overall" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
+                                    <Label alignment="CENTER" contentDisplay="CENTER" text="Average Age (Years)" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <Label text="Youngest (Years)" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                    <Label text="Oldest   (Years)" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                                    <Label text="Number of" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                    <Label text="Percentage" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                                    <Label fx:id="avgMale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <Label fx:id="youngMale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                    <Label fx:id="oldMale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                                    <Label fx:id="numMale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                    <Label fx:id="percentMale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                                    <Label fx:id="avgFemale" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <Label fx:id="youngFemale" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                    <Label fx:id="oldFemale" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                                    <Label fx:id="numFemale" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                    <Label fx:id="percentFemale" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                                    <Label fx:id="avgFW" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <Label fx:id="youngFW" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                    <Label fx:id="oldFW" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                                    <Label fx:id="numFW" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                    <Label fx:id="percentFW" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                                    <Label fx:id="avgMand" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <Label fx:id="youngMand" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                    <Label fx:id="oldMand" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                                    <Label fx:id="numMand" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                    <Label fx:id="percentMand" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                                    <Label fx:id="avgAll" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <Label fx:id="youngAll" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                    <Label fx:id="oldAll" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                                    <Label fx:id="numAll" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                    <Label fx:id="percentAll" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                                    <Button mnemonicParsing="false" onAction="#display" text="Retrieve" GridPane.halignment="CENTER" />
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="98.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="103.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="99.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <GridPane gridLinesVisible="true" layoutX="98.0" prefHeight="69.0" prefWidth="402.0">
+                                 <children>
+                                    <Label text="GENDER" GridPane.halignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="PATIENT TYPE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <Button alignment="CENTER" layoutX="2.0" layoutY="19.0" mnemonicParsing="false" onAction="#mainMenu" text="Main Menu" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

@@ -18,13 +18,17 @@ import java.sql.*;
 /**
  * Created by bjoynes on 11/4/2016.
  */
-public class LoginController {
+public class LoginController{
     @FXML private TextField userField;
     @FXML private PasswordField passwordField;
     @FXML private Button loginBtn;
 
 
-
+    /**
+     *
+     * @param event returns object that the event returns
+     * @throws IOException
+     */
 
 
     @FXML private void login(ActionEvent event) throws IOException{
@@ -50,7 +54,7 @@ public class LoginController {
                 Parent root = FXMLLoader.load(getClass().getResource("/main/View/mainView.fxml"));
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
-                stage.setTitle("Hello World");
+                stage.setTitle("Login");
                 stage.setScene(scene);
                 stage.show();
 
@@ -74,5 +78,7 @@ public class LoginController {
 
 
     }
+
+
 
 }
